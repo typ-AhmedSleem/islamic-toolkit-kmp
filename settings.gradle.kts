@@ -29,4 +29,4 @@ dependencyResolutionManagement {
 }
 
 
-include(":shared")
+//include(":shared")
