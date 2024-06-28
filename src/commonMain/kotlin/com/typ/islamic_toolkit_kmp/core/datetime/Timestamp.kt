@@ -95,7 +95,7 @@ class Timestamp private constructor() {
         get() = date.dayOfMonth
         set(value) {
             val curr = this.date
-            val date = LocalDate(curr.year, curr.monthNumber, curr.dayOfMonth + value)
+            val date = LocalDate(curr.year, curr.monthNumber, value)
             instant = LocalDateTime(date, this.time).toInstant(timeZone)
         }
 
@@ -104,7 +104,7 @@ class Timestamp private constructor() {
         get() = date.monthNumber
         set(value) {
             val curr = this.date
-            val date = LocalDate(curr.year, curr.monthNumber + value, curr.dayOfMonth)
+            val date = LocalDate(curr.year, value, curr.dayOfMonth)
             println("Settings month to $value. sum= ${curr.monthNumber + value}")
             instant = LocalDateTime(date, this.time).toInstant(timeZone)
         }
@@ -113,7 +113,7 @@ class Timestamp private constructor() {
         get() = date.year
         set(value) {
             val curr = this.date
-            val date = LocalDate(curr.year + value, curr.month, curr.dayOfMonth)
+            val date = LocalDate(value, curr.month, curr.dayOfMonth)
             instant = LocalDateTime(date, this.time).toInstant(timeZone)
         }
 
