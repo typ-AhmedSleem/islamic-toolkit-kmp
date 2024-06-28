@@ -50,7 +50,7 @@ class PrayerTimesTest {
 
         assertTrue {
             println("Current pray is: $current")
-            current.type == PrayType.ISHA
+            current.type == PrayType.FAJR
         }
     }
 

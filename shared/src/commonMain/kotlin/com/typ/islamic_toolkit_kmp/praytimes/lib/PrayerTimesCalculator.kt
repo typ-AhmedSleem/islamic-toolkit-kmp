@@ -194,7 +194,7 @@ class PrayerTimesCalculator(val location: Location, val config: Config) {
         var calcMethod: CalculationMethod = CalculationMethod.CUSTOM,
         var asrMethod: AsrMethod = AsrMethod.SHAFII,
         var higherLatMethod: HigherLatitudeMethod = HigherLatitudeMethod.NONE,
-        var useDefaultTimezone: Boolean = false,
+        var useDefaultTimezone: Boolean = true,
         var offsets: PrayerTimesOffsets = PrayerTimesOffsets(),
         var dhuhrMinutes: Int = 0
     ) {
