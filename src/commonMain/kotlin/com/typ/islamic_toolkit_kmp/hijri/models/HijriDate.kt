@@ -6,10 +6,13 @@
 package com.typ.islamic_toolkit_kmp.hijri.models
 
 import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager
 import com.typ.islamic_toolkit_kmp.hijri.lib.HijriCalendar
 import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriCalendarMonthType
 import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonth
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonthNameFormat
 import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.text.HijriCalendarMonthsNames
+import com.typ.shared.Locale
 
 /**
  * Model class representing HijriDate
@@ -33,6 +36,17 @@ open class HijriDate(
 
     val longMonthName: String
         get() = month.longName
+
+    fun getMonthName(
+        month: HijriCalendarMonthType,
+        locale: Locale = LocaleManager.getDefault(),
+        format: HijriMonthNameFormat = HijriMonthNameFormat.LONG
+    ): String {
+        return HijriCalendarMonthsNames.getWithNames(month, locale).let {
+            if (format == HijriMonthNameFormat.LONG) it.longName
+            else it.shortName
+        }
+    }
 
     fun toGregorian(): Timestamp = HijriCalendar.toGregorian(this)
 
