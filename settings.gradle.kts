@@ -26,7 +26,11 @@ dependencyResolutionManagement {
         }
         mavenCentral()
     }
+<<<<<<< HEAD
 }
 
 
 //include(":shared")
+=======
+}
+>>>>>>> protable

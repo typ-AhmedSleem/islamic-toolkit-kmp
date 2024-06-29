@@ -1,13 +1,14 @@
-package com.typ.islamic_toolkit_kmp
+package com.lvfd.islamic_toolkit_kmp
 
-import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
-import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager
-import com.typ.islamic_toolkit_kmp.core.location.PopularLocations
-import com.typ.islamic_toolkit_kmp.praytimes.enums.CalculationMethod
-import com.typ.islamic_toolkit_kmp.praytimes.enums.PrayType
-import com.typ.islamic_toolkit_kmp.praytimes.lib.PrayerTimesCalculator
-import com.typ.islamic_toolkit_kmp.praytimes.models.PrayerTimes
-import com.typ.islamic_toolkit_kmp.praytimes.utils.prayerTimesCalcConfig
+import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.lvfd.islamic_toolkit_kmp.core.locale.LocaleManager
+import com.lvfd.islamic_toolkit_kmp.core.location.PopularLocations
+import com.lvfd.islamic_toolkit_kmp.hijri.lib.HijriCalendar
+import com.lvfd.islamic_toolkit_kmp.praytimes.enums.CalculationMethod
+import com.lvfd.islamic_toolkit_kmp.praytimes.enums.PrayType
+import com.lvfd.islamic_toolkit_kmp.praytimes.lib.PrayerTimesCalculator
+import com.lvfd.islamic_toolkit_kmp.praytimes.models.PrayerTimes
+import com.lvfd.islamic_toolkit_kmp.praytimes.utils.prayerTimesCalcConfig
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertTrue
@@ -23,7 +24,6 @@ class LocaleTest {
             curr == english
         }
     }
-
 }
 
 class PrayerTimesTest {
@@ -54,5 +54,17 @@ class PrayerTimesTest {
         }
     }
 
+}
+
+class HijriCalendarTest {
+
+    @Test
+    fun testToday() {
+        listOf(
+            HijriCalendar.yesterday,
+            HijriCalendar.today,
+            HijriCalendar.tomorrow
+        ).onEach(::println)
+    }
 
 }
