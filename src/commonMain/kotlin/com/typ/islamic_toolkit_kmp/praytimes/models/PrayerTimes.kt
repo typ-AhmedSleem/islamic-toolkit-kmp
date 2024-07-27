@@ -1,10 +1,10 @@
-package com.lvfd.islamic_toolkit_kmp.praytimes.models
+package com.typ.islamic_toolkit_kmp.praytimes.models
 
-import com.lvfd.islamic_toolkit_kmp.core.datetime.CalendarField
-import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
-import com.lvfd.islamic_toolkit_kmp.core.location.Location
-import com.lvfd.islamic_toolkit_kmp.praytimes.enums.PrayType
-import com.lvfd.islamic_toolkit_kmp.praytimes.lib.PrayerTimesCalculator
+import com.typ.islamic_toolkit_kmp.core.datetime.CalendarField
+import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.core.location.Location
+import com.typ.islamic_toolkit_kmp.praytimes.enums.PrayType
+import com.typ.islamic_toolkit_kmp.praytimes.lib.PrayerTimesCalculator
 import kotlinx.datetime.LocalTime
 import kotlin.jvm.JvmStatic
 

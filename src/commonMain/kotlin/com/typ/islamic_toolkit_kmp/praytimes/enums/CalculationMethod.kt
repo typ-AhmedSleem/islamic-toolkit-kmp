@@ -1,6 +1,6 @@
-package com.lvfd.islamic_toolkit_kmp.praytimes.enums
+package com.typ.islamic_toolkit_kmp.praytimes.enums
 
-import com.lvfd.islamic_toolkit_kmp.praytimes.lib.CalculationMethodParameters
+import com.typ.islamic_toolkit_kmp.praytimes.lib.CalculationMethodParameters
 
 /**
  * Calculation Method used during calculating PrayTimes.

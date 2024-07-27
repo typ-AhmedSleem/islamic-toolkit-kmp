@@ -1,6 +1,6 @@
-package com.lvfd.islamic_toolkit_kmp.qibla
+package com.typ.islamic_toolkit_kmp.qibla
 
-import com.lvfd.islamic_toolkit_kmp.core.math.Math
+import com.typ.islamic_toolkit_kmp.core.math.Math
 import kotlin.jvm.JvmStatic
 import kotlin.math.atan2
 import kotlin.math.cos

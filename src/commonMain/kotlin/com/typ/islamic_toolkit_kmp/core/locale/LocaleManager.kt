@@ -1,6 +1,6 @@
-package com.lvfd.islamic_toolkit_kmp.core.locale
+package com.typ.islamic_toolkit_kmp.core.locale
 
-import com.lvfd.islamic_toolkit_kmp.shared.Locale
+import com.typ.islamic_toolkit_kmp.shared.Locale
 
 /**
  * Locale Manager
@@ -9,18 +9,6 @@ import com.lvfd.islamic_toolkit_kmp.shared.Locale
  * The object can be used to access locale-related functionality throughout the application.
  */
 object LocaleManager {
-
-    /**
-     * Get the Default Locale.
-     *
-     * This function returns the default locale used in the system. The default locale
-     * is determined based on the language and country settings of the underlying operating system.
-     *
-     * @return The default `Locale` used in the system.
-     *
-     * @see Locale for more details on how it works
-     */
-    fun getDefault(): Locale = Locales.ENGLISH
 
     /**
      * This function creates a new custom locale with given language code.
