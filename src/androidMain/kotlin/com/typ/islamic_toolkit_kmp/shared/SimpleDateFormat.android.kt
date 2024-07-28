@@ -1,6 +1,6 @@
-package com.lvfd.islamic_toolkit_kmp.shared
+package com.typ.islamic_toolkit_kmp.shared
 
-import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Date
 

@@ -1,8 +1,8 @@
-package com.lvfd.islamic_toolkit_kmp.praytimes.utils
+package com.typ.islamic_toolkit_kmp.praytimes.utils
 
-import com.lvfd.islamic_toolkit_kmp.core.annotations.NeedsTesting
-import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
-import com.lvfd.islamic_toolkit_kmp.praytimes.enums.HigherLatitudeMethod
+import com.typ.islamic_toolkit_kmp.core.annotations.NeedsTesting
+import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.praytimes.enums.HigherLatitudeMethod
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.isoDayNumber
 import kotlinx.datetime.number

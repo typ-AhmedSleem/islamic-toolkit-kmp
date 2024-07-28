@@ -1,6 +1,6 @@
-package com.lvfd.islamic_toolkit_kmp.qibla
+package com.typ.islamic_toolkit_kmp.qibla
 
-import com.lvfd.islamic_toolkit_kmp.core.math.Math
+import com.typ.islamic_toolkit_kmp.core.math.Math
 
 open class Angle {
 

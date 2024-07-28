@@ -1,4 +1,4 @@
-package com.lvfd.islamic_toolkit_kmp.core.math
+package com.typ.islamic_toolkit_kmp.core.math
 
 object Math {
 

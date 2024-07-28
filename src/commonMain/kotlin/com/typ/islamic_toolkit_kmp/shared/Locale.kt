@@ -1,4 +1,4 @@
-package com.lvfd.islamic_toolkit_kmp.shared
+package com.typ.islamic_toolkit_kmp.shared
 
 expect class Locale(language: String = "", country: String = "") {
     val language: String

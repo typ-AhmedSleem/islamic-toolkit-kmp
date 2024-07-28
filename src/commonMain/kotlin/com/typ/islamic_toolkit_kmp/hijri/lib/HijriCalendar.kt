@@ -3,15 +3,15 @@
  *
  * Copyright (c) 2021.  TYP INC. All Rights Reserved
  */
-package com.lvfd.islamic_toolkit_kmp.hijri.lib
+package com.typ.islamic_toolkit_kmp.hijri.lib
 
-import com.lvfd.islamic_toolkit_kmp.core.annotations.IntRange
-import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriCalendarMonthType
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.UmmalquraGregorianConverter
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.UmmalquraGregorianConverter.getDaysInMonth
-import com.lvfd.islamic_toolkit_kmp.hijri.models.HijriDate
-import com.lvfd.islamic_toolkit_kmp.hijri.utils.toHijri
+import com.typ.islamic_toolkit_kmp.core.annotations.IntRange
+import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriCalendarMonthType
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.UmmalquraGregorianConverter
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.UmmalquraGregorianConverter.getDaysInMonth
+import com.typ.islamic_toolkit_kmp.hijri.models.HijriDate
+import com.typ.islamic_toolkit_kmp.hijri.utils.toHijri
 import kotlinx.datetime.LocalDate
 import kotlin.jvm.JvmStatic
 

@@ -1,4 +1,4 @@
-package com.lvfd.islamic_toolkit_kmp.core.location
+package com.typ.islamic_toolkit_kmp.core.location
 
 /**
  * Popular Locations Object.

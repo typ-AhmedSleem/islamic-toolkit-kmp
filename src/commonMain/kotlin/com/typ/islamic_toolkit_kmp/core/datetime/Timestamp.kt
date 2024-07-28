@@ -3,10 +3,10 @@
  *
  * Copyright (c) 2021.  TYP INC. All Rights Reserved
  */
-package com.lvfd.islamic_toolkit_kmp.core.datetime
+package com.typ.islamic_toolkit_kmp.core.datetime
 
-import com.lvfd.islamic_toolkit_kmp.core.annotations.IntRange
-import com.lvfd.islamic_toolkit_kmp.core.datetime.PatternFormatter.DateTimeFull
+import com.typ.islamic_toolkit_kmp.core.annotations.IntRange
+import com.typ.islamic_toolkit_kmp.core.datetime.PatternFormatter.DateTimeFull
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek

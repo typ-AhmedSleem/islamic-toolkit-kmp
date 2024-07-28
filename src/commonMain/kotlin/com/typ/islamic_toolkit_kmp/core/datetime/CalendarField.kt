@@ -1,4 +1,4 @@
-package com.lvfd.islamic_toolkit_kmp.core.datetime
+package com.typ.islamic_toolkit_kmp.core.datetime
 
 enum class CalendarField {
     YEAR,

@@ -1,4 +1,4 @@
-package com.lvfd.islamic_toolkit_kmp.praytimes.lib
+package com.typ.islamic_toolkit_kmp.praytimes.lib
 
 class PrayerTimesOffsets(
     var fajr: Int = 0,

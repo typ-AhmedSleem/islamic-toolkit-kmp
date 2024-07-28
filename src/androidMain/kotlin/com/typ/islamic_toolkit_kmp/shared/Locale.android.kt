@@ -1,4 +1,4 @@
-package com.lvfd.islamic_toolkit_kmp.shared
+package com.typ.islamic_toolkit_kmp.shared
 
 actual class Locale actual constructor(language: String, country: String) {
 

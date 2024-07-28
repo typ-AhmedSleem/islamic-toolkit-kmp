@@ -1,6 +1,6 @@
-package com.lvfd.islamic_toolkit_kmp.praytimes.utils
+package com.typ.islamic_toolkit_kmp.praytimes.utils
 
-import com.lvfd.islamic_toolkit_kmp.core.math.Math
+import com.typ.islamic_toolkit_kmp.core.math.Math
 import kotlin.math.acos
 import kotlin.math.asin
 import kotlin.math.atan

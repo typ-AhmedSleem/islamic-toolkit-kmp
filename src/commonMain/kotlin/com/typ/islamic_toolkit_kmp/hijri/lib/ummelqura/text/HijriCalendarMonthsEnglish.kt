@@ -6,7 +6,7 @@
  *
  * Copyright (c) TYP Electronics Corporation.  All Rights Reserved
  */
-package com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.text
+package com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.text
 
 object HijriCalendarMonthsEnglish : HijriCalendarMonthsNames() {
 

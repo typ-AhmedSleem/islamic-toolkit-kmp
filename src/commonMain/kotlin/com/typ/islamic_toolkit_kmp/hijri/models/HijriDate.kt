@@ -3,16 +3,16 @@
  *
  * Copyright (c) 2021.  TYP INC. All Rights Reserved
  */
-package com.lvfd.islamic_toolkit_kmp.hijri.models
+package com.typ.islamic_toolkit_kmp.hijri.models
 
-import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
-import com.lvfd.islamic_toolkit_kmp.core.locale.LocaleManager
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.HijriCalendar
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriCalendarMonthType
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonth
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonthNameFormat
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.text.HijriCalendarMonthsNames
-import com.lvfd.islamic_toolkit_kmp.shared.Locale
+import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager
+import com.typ.islamic_toolkit_kmp.hijri.lib.HijriCalendar
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriCalendarMonthType
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonth
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonthNameFormat
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.text.HijriCalendarMonthsNames
+import com.typ.islamic_toolkit_kmp.shared.Locale
 
 /**
  * Model class representing HijriDate
@@ -39,7 +39,7 @@ open class HijriDate(
 
     fun getMonthName(
         month: HijriCalendarMonthType,
-        locale: Locale = LocaleManager.getDefault(),
+        locale: Locale = LocaleManager.Locales.ENGLISH,
         format: HijriMonthNameFormat = HijriMonthNameFormat.LONG
     ): String {
         return HijriCalendarMonthsNames.getWithNames(month, locale).let {

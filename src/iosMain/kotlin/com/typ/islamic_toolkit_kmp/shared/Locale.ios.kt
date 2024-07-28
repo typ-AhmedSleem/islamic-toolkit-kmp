@@ -1,19 +1,27 @@
-package com.lvfd.islamic_toolkit_kmp.shared
+@file:Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
+
+package com.typ.islamic_toolkit_kmp.shared
+
+import platform.Foundation.NSLocale
 
 actual class Locale actual constructor(language: String, country: String) {
 
-    private val _jvmLocale = java.util.Locale(language, country)
+    private val _iosLocale = NSLocale(
+        if (country.isNotEmpty()) "${language}_${country}"
+        else language
+    )
 
     actual val language: String = language
     actual val country: String = country
 
-    val jvmLocale: java.util.Locale
-        get() = _jvmLocale
+    val iosLocale: NSLocale
+        get() = _iosLocale
 
     actual override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        if (other == null) return false
 
+        if (this::class != other::class) return false
         return language == (other as Locale).language
     }
 
@@ -26,5 +34,4 @@ actual class Locale actual constructor(language: String, country: String) {
     actual override fun toString(): String {
         return "Locale(language='$language', country='$country')"
     }
-
 }

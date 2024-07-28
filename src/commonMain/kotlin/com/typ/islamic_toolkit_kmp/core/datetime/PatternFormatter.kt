@@ -3,13 +3,14 @@
  *
  * Copyright (c) 2021.  TYP INC. All Rights Reserved
  */
-package com.lvfd.islamic_toolkit_kmp.core.datetime
+package com.typ.islamic_toolkit_kmp.core.datetime
 
-import com.lvfd.islamic_toolkit_kmp.core.datetime.PatternFormatter.Companion.custom
-import com.lvfd.islamic_toolkit_kmp.core.datetime.PatternFormatter.PrayTimes
-import com.lvfd.islamic_toolkit_kmp.core.locale.LocaleManager
-import com.lvfd.islamic_toolkit_kmp.shared.Locale
-import com.lvfd.islamic_toolkit_kmp.shared.SimpleDateFormat
+import com.typ.islamic_toolkit_kmp.core.datetime.PatternFormatter.Companion.custom
+import com.typ.islamic_toolkit_kmp.core.datetime.PatternFormatter.PrayTimes
+import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager
+import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager.Locales
+import com.typ.islamic_toolkit_kmp.shared.Locale
+import com.typ.islamic_toolkit_kmp.shared.SimpleDateFormat
 
 /**
  * Pattern Formatter for datetime objects
@@ -97,9 +98,11 @@ open class PatternFormatter private constructor(private val pattern: String) {
      * @param timestamp The timestamp to be formatted.
      * @return The formatted date and time string based on the specified `pattern` and `locale`.
      *
-     * @see LocaleManager for more information about locales
+     * @see LocaleManager for more information about locales.
+     *
+     * NOTE: This uses English locale by default. see [Locales.ENGLISH]
      */
-    fun format(timestamp: Timestamp) = format(timestamp, LocaleManager.getDefault())
+    fun format(timestamp: Timestamp) = format(timestamp, Locales.ENGLISH)
 
 
     /**

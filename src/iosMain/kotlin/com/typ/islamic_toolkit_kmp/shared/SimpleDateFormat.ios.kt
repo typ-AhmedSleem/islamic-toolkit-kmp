@@ -1,8 +1,8 @@
 @file:Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 
-package com.lvfd.islamic_toolkit_kmp.shared
+package com.typ.islamic_toolkit_kmp.shared
 
-import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
 import kotlinx.datetime.Clock
 import kotlinx.datetime.toNSDate
 import platform.Foundation.NSDateFormatter

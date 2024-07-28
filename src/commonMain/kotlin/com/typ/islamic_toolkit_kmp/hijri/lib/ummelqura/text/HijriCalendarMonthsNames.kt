@@ -1,9 +1,9 @@
-package com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.text
+package com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.text
 
-import com.lvfd.islamic_toolkit_kmp.core.locale.LocaleManager
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriCalendarMonthType
-import com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonth
-import com.lvfd.islamic_toolkit_kmp.shared.Locale
+import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriCalendarMonthType
+import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonth
+import com.typ.islamic_toolkit_kmp.shared.Locale
 
 abstract class HijriCalendarMonthsNames {
 
@@ -11,7 +11,7 @@ abstract class HijriCalendarMonthsNames {
     abstract val shortNames: Map<Int, String>
 
     companion object {
-        fun getWithNames(type: HijriCalendarMonthType, locale: Locale = LocaleManager.getDefault()): HijriMonth {
+        fun getWithNames(type: HijriCalendarMonthType, locale: Locale = LocaleManager.Locales.ENGLISH): HijriMonth {
             val names = when (locale) {
                 LocaleManager.Locales.ARABIC -> {
                     val short = HijriCalendarMonthsArabic.shortNames[type.ordinal + 1]!!

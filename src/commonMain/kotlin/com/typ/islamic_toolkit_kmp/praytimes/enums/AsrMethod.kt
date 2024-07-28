@@ -1,4 +1,4 @@
-package com.lvfd.islamic_toolkit_kmp.praytimes.enums
+package com.typ.islamic_toolkit_kmp.praytimes.enums
 
 // todo: Must be documented
 enum class AsrMethod {

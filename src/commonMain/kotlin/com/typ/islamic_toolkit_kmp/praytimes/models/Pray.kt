@@ -1,11 +1,11 @@
-package com.lvfd.islamic_toolkit_kmp.praytimes.models
+package com.typ.islamic_toolkit_kmp.praytimes.models
 
-import com.lvfd.islamic_toolkit_kmp.core.datetime.PatternFormatter
-import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
-import com.lvfd.islamic_toolkit_kmp.core.locale.LocaleManager
-import com.lvfd.islamic_toolkit_kmp.praytimes.enums.PrayStatus
-import com.lvfd.islamic_toolkit_kmp.praytimes.enums.PrayType
-import com.lvfd.islamic_toolkit_kmp.shared.Locale
+import com.typ.islamic_toolkit_kmp.core.datetime.PatternFormatter
+import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager
+import com.typ.islamic_toolkit_kmp.praytimes.enums.PrayStatus
+import com.typ.islamic_toolkit_kmp.praytimes.enums.PrayType
+import com.typ.islamic_toolkit_kmp.shared.Locale
 import kotlin.jvm.JvmField
 
 /**
@@ -28,6 +28,7 @@ class Pray(
 
     val status: PrayStatus
         get() {
+            // todo: handle current pray status
             return if (time.isBefore(Timestamp.now)) PrayStatus.PASSED
             else PrayStatus.UPCOMING
         }
@@ -35,18 +36,17 @@ class Pray(
     val passed: Boolean
         get() = (status == PrayStatus.PASSED)
 
+    val current: Boolean
+        get() = (status == PrayStatus.CURRENT)
+
     val upcoming: Boolean
         get() = (status == PrayStatus.UPCOMING)
 
     val formattedTime: String
-        get() = PatternFormatter.PrayTimes().format(time)
+        get() = getFormattedTime(PatternFormatter.PrayTimes(), LocaleManager.Locales.ENGLISH)
 
     fun getFormattedTime(formatter: PatternFormatter, locale: Locale): String {
         return formatter.format(time, locale)
-    }
-
-    fun getFormattedTime(formatter: PatternFormatter): String {
-        return formatter.format(time, LocaleManager.getDefault())
     }
 
     override fun equals(other: Any?): Boolean {

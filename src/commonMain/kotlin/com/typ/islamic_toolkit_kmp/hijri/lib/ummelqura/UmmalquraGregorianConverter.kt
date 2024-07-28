@@ -6,9 +6,9 @@
  *
  * Copyright (c) TYP Electronics Corporation.  All Rights Reserved
  */
-package com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura
+package com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura
 
-import com.lvfd.islamic_toolkit_kmp.core.datetime.Timestamp
+import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
 import kotlin.jvm.JvmStatic
 import kotlin.math.floor
 

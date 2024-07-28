@@ -1,4 +1,4 @@
-package com.lvfd.islamic_toolkit_kmp.hijri.lib.ummelqura
+package com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura
 
 
 enum class HijriCalendarMonthType {
