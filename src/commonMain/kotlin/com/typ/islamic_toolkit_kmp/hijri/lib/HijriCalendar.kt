@@ -43,7 +43,7 @@ object HijriCalendar {
     @JvmStatic
     fun toGregorian(hijriDate: HijriDate): Timestamp {
         return UmmalquraGregorianConverter.toGregorian(hijriDate.year, hijriDate.monthNumber, hijriDate.day).run {
-            Timestamp(LocalDate(this[0], this[1], this[2]))
+            Timestamp(LocalDate(this[0], this[1] + 1, this[2]))
         }
     }
 
