@@ -30,7 +30,8 @@ import kotlinx.datetime.toLocalDateTime
  */
 class Timestamp private constructor() {
 
-    private var instant: Instant = Clock.System.now()
+    var instant: Instant = Clock.System.now()
+        private set
 
     var timeZone: TimeZone = TimeZone.currentSystemDefault()
         set(value) {

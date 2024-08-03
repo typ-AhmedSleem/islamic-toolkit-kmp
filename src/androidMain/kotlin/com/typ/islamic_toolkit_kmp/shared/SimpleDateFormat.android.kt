@@ -6,7 +6,7 @@ import java.util.Date
 
 actual class SimpleDateFormat actual constructor(pattern: String, locale: Locale) {
 
-    private val formatter = SimpleDateFormat(pattern, locale.jvmLocale)
+    private val formatter = SimpleDateFormat(pattern, locale.toJvmLocale())
 
     actual fun format(timestamp: Timestamp): String {
         return formatter.format(Date(timestamp.millis))
