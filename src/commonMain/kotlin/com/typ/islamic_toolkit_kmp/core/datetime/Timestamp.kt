@@ -213,6 +213,12 @@ class Timestamp private constructor() {
     val isTomorrow: Boolean
         get() = dateMatches(tomorrow)
 
+    val previousDay: Timestamp
+        get() = this.clone().apply { day -= 1 }
+
+    val nextDay: Timestamp
+        get() = this.clone().apply { day += 1 }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         return if (other == null || this::class != other::class) false else matches(other as Timestamp?)

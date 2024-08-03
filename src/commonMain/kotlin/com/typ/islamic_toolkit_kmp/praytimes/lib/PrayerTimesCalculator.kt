@@ -181,13 +181,17 @@ class PrayerTimesCalculator(val location: Location, val config: Config) {
         )
     }
 
-    fun getPrayTimes(date: Timestamp): Array<LocalTime> {
+    private fun getPrayerTimesForDate(date: Timestamp): Array<LocalTime> {
         var jDate = AstronomyUtils.calculateJulianDate(LocalDate(date.year, date.month, date.day))
 
         val lonDiff = location.longitude / (15.0 * 24.0)
         jDate -= lonDiff
 
         return computePrayerTimes(jDate)
+    }
+
+    fun getPrayTimes(date: Timestamp): Array<LocalTime> {
+        return getPrayerTimesForDate(date).plus(getPrayerTimesForDate(date.nextDay)[0])
     }
 
     open class Config(
@@ -228,7 +232,7 @@ class PrayerTimesCalculator(val location: Location, val config: Config) {
             maghribMinutes: Double = this.params.maghribMinutes,
             shouldApplyIshaMinutes: Boolean = this.params.shouldApplyIshaMinutes,
             ishaAngle: Double = this.params.ishaAngle,
-            ishaMinutes: Double = this.params.ishaMinutes
+            ishaMinutes: Double = this.params.ishaMinutes,
         ) {
             var anythingChanged = false
             this.params.apply {
