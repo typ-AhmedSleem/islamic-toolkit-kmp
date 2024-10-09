@@ -18,6 +18,10 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Duration.Companion.days
+import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * Class that holds and does all operations that has time and date on it.
@@ -106,7 +110,6 @@ class Timestamp private constructor() {
         set(value) {
             val curr = this.date
             val date = LocalDate(curr.year, value, curr.dayOfMonth)
-            println("Settings month to $value. sum= ${curr.monthNumber + value}")
             instant = LocalDateTime(date, this.time).toInstant(timeZone)
         }
 
@@ -176,10 +179,10 @@ class Timestamp private constructor() {
         when (field) {
             CalendarField.YEAR -> year += amount
             CalendarField.MONTH -> month += amount
-            CalendarField.DATE -> day += amount
-            CalendarField.HOUR -> hour += amount
-            CalendarField.MINUTES -> minutes += amount
-            CalendarField.SECONDS -> seconds += amount
+            CalendarField.DATE -> instant += amount.days
+            CalendarField.HOUR -> instant += amount.hours
+            CalendarField.MINUTES -> instant += amount.minutes
+            CalendarField.SECONDS -> instant += amount.seconds
         }
     }
 
@@ -214,10 +217,14 @@ class Timestamp private constructor() {
         get() = dateMatches(tomorrow)
 
     val previousDay: Timestamp
-        get() = this.clone().apply { day -= 1 }
+        get() = this.clone().apply {
+            roll(CalendarField.DATE, -1)
+        }
 
     val nextDay: Timestamp
-        get() = this.clone().apply { day += 1 }
+        get() = this.clone().apply {
+            roll(CalendarField.DATE, 1)
+        }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
