@@ -21,6 +21,16 @@ object LocaleManager {
     fun custom(language: String) = Locale(language)
 
     /**
+     * This function creates a new custom locale with given language code.
+     *
+     * @param language Language code.
+     * @param country Country code.
+     *
+     * @return a new Locale with the given language code.
+     */
+    fun custom(language: String, country: String) = Locale(language, country)
+
+    /**
      * Locales
      *
      * The `Locales` object provides an easy way to get locales that are not in `java.util.Locale`

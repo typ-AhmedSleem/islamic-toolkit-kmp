@@ -28,6 +28,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.datetime.ext)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

@@ -14,27 +14,38 @@ class PrayerTimes private constructor(
     val dhuhr: Pray,
     val asr: Pray,
     val maghrib: Pray,
-    val isha: Pray
+    val isha: Pray,
+    val fajrNextDay: Pray,
 ) {
 
-    operator fun get(index: Int) = toArray()[index]
+    operator fun get(index: Int) = listed[index]
 
-    operator fun contains(pray: Pray) = pray in toArray()
+    operator fun contains(pray: Pray) = pray in listed
 
-    operator fun iterator() = toArray().iterator()
+    operator fun iterator() = listed.iterator()
 
-    fun toArray() = arrayOf(fajr, sunrise, dhuhr, asr, maghrib, isha)
-
-    fun toArrayNoSunrise() = arrayOf(fajr, dhuhr, asr, maghrib, isha)
+    val listed by lazy { arrayOf(fajr, sunrise, dhuhr, asr, maghrib, isha) }
+    val listedNoSunrise by lazy { arrayOf(fajr, dhuhr, asr, maghrib, isha) }
 
     val currentPray: Pray
-        get() = getCurrentPray(this)
+        get() {
+            // * Check if fajr is upcoming
+            if (fajr.upcoming) return fajr
+            // * Get the last passed pray
+            return listedNoSunrise.last {
+                println("currentPray: Checking $it")
+                it.passed
+            }
+        }
 
     val nextPray: Pray?
-        get() = getNextPray(this)
+        get() = listed.firstOrNull { it.upcoming }
 
     val upcomingPrays: Array<Pray>
-        get() = getUpcomingPrays(this)
+        get() = listed.filter { it.upcoming }.toTypedArray()
+
+    val todayPraysFinished: Boolean
+        get() = isha.passed
 
     override fun toString(): String {
         return """
@@ -44,7 +55,11 @@ class PrayerTimes private constructor(
                 dhuhr=${dhuhr}
                 asr=${asr}
                 maghrib=${maghrib}
-                isha=${isha}
+                isha=${isha},
+                currentPray=${currentPray},
+                nextPray=${nextPray},
+                fajrNextDay=${fajrNextDay},
+                todayPraysFinished=${todayPraysFinished},
             }
             """.trimIndent()
     }
@@ -98,8 +113,9 @@ class PrayerTimes private constructor(
                     dhuhr = Pray(PrayType.DHUHR, timestampFromHMS(timestamp.clone(), this[2])),
                     asr = Pray(PrayType.ASR, timestampFromHMS(timestamp.clone(), this[3])),
                     maghrib = Pray(PrayType.MAGHRIB, timestampFromHMS(timestamp.clone(), this[4])),
-                    isha = Pray(PrayType.ISHA, timestampFromHMS(timestamp.clone(), this[5]))
-                )
+                    isha = Pray(PrayType.ISHA, timestampFromHMS(timestamp.clone(), this[5])),
+                    fajrNextDay = Pray(PrayType.FAJR, timestampFromHMS(timestamp.nextDay, this[6]))
+                ).also { println(it.toString()) }
             }
         }
 
@@ -125,39 +141,6 @@ class PrayerTimes private constructor(
         @JvmStatic
         fun getTodayPrays(location: Location, config: PrayerTimesCalculator.Config): PrayerTimes {
             return getPrays(location, config, Timestamp.now)
-        }
-
-        @JvmStatic
-        fun getCurrentPray(prays: PrayerTimes): Pray {
-            var currentPray: Pray = prays.fajr
-            for (pray in prays.toArrayNoSunrise()) {
-                if (pray.passed) currentPray = pray
-                else break
-            }
-            return currentPray
-        }
-
-        @JvmStatic
-        fun getNextPray(prays: PrayerTimes): Pray? {
-            // Get the next pray in given prays
-            if (prays.isha.passed) return null
-            var nextPray = prays.fajr
-            for (pray in prays) {
-                if (pray.passed) continue
-                nextPray = pray
-                break
-            }
-            return nextPray
-        }
-
-        @JvmStatic
-        fun getUpcomingPrays(prays: PrayerTimes): Array<Pray> {
-            val upPrays = mutableListOf<Pray>()
-            for (pray in prays) {
-                if (pray.passed) continue
-                upPrays.add(pray)
-            }
-            return upPrays.toTypedArray()
         }
 
     }

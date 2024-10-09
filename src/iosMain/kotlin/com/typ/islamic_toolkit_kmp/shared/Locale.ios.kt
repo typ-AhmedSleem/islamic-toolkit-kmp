@@ -6,16 +6,15 @@ import platform.Foundation.NSLocale
 
 actual class Locale actual constructor(language: String, country: String) {
 
-    private val _iosLocale = NSLocale(
-        if (country.isNotEmpty()) "${language}_${country}"
-        else language
-    )
-
     actual val language: String = language
     actual val country: String = country
 
-    val iosLocale: NSLocale
-        get() = _iosLocale
+    fun toNSLocale(): NSLocale {
+        return NSLocale(
+            if (country.isNotEmpty()) "${language}_${country}"
+            else language
+        )
+    }
 
     actual override fun equals(other: Any?): Boolean {
         if (this === other) return true
