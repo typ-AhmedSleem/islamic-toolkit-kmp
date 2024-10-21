@@ -115,7 +115,7 @@ class PrayerTimes private constructor(
                     maghrib = Pray(PrayType.MAGHRIB, timestampFromHMS(timestamp.clone(), this[4])),
                     isha = Pray(PrayType.ISHA, timestampFromHMS(timestamp.clone(), this[5])),
                     fajrNextDay = Pray(PrayType.FAJR, timestampFromHMS(timestamp.nextDay, this[6]))
-                ).also { println(it.toString()) }
+                )
             }
         }
 
