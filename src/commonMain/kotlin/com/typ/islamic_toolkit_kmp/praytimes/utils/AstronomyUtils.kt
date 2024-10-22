@@ -33,7 +33,7 @@ object AstronomyUtils {
         val A = floor(tYear / 100.0)
         val B = 2 - A + floor(A / 4.0)
 
-        return floor(365.25 * (tYear + 4716)) + floor(30.6001 * (tMonth + 1)) + date.dayOfWeek.isoDayNumber + B - 1524.5
+        return floor(365.25 * (tYear + 4716)) + floor(30.6001 * (tMonth + 1)) + date.dayOfMonth + B - 1524.5
     }
 
     /** Convert a calendar date to julian date (second method) */
