@@ -18,19 +18,19 @@ open class Location(
     /**
      * Code of country this location belongs to
      */
-    val code: String,
+    open val code: String,
     /**
      * Latitude of this location
      */
-    val latitude: Double,
+    open val latitude: Double,
     /**
      * Longitude of this location
      */
-    val longitude: Double,
+    open val longitude: Double,
     /**
      * Timezone of this location
      */
-    val timezone: Double
+    open val timezone: Double
 ) {
 
     override fun equals(other: Any?): Boolean {
