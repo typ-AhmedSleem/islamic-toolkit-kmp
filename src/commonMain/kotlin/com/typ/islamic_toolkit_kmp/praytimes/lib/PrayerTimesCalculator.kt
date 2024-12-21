@@ -194,13 +194,13 @@ class PrayerTimesCalculator(val location: Location, val config: Config) {
         return getPrayerTimesForDate(date).plus(getPrayerTimesForDate(date.nextDay)[0])
     }
 
-    open class Config(
-        var calcMethod: CalculationMethod = CalculationMethod.CUSTOM,
-        var asrMethod: AsrMethod = AsrMethod.SHAFII,
-        var higherLatMethod: HigherLatitudeMethod = HigherLatitudeMethod.NONE,
-        var useDefaultTimezone: Boolean = true,
-        var offsets: PrayerTimesOffsets = PrayerTimesOffsets(),
-        var dhuhrMinutes: Int = 0
+    sealed class Config(
+        open var calcMethod: CalculationMethod,
+        open var asrMethod: AsrMethod,
+        open var higherLatMethod: HigherLatitudeMethod,
+        open var useDefaultTimezone: Boolean = true,
+        open var offsets: PrayerTimesOffsets = PrayerTimesOffsets(),
+        open var dhuhrMinutes: Int = 0
     ) {
 
         var params: CalculationMethodParameters = CalculationMethod.CUSTOM.parameters
