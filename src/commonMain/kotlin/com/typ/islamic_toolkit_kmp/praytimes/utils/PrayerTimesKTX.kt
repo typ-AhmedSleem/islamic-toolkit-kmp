@@ -3,10 +3,11 @@ package com.typ.islamic_toolkit_kmp.praytimes.utils
 import com.typ.islamic_toolkit_kmp.praytimes.enums.CalculationMethod
 import com.typ.islamic_toolkit_kmp.praytimes.lib.CalculationMethodParameters
 import com.typ.islamic_toolkit_kmp.praytimes.lib.PrayerTimesCalculator
+import com.typ.islamic_toolkit_kmp.praytimes.lib.PrayerTimesCalculatorConfigs
 import com.typ.islamic_toolkit_kmp.praytimes.lib.PrayerTimesOffsets
 
 inline fun prayerTimesCalcConfig(config: PrayerTimesCalculator.Config.() -> Unit): PrayerTimesCalculator.Config {
-    return PrayerTimesCalculator.Config().apply(config)
+    return PrayerTimesCalculatorConfigs.CUSTOM.apply(config)
 }
 
 inline fun prayerTimesOffsets(offsets: PrayerTimesOffsets.() -> Unit): PrayerTimesOffsets {
