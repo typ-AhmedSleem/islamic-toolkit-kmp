@@ -1,6 +1,6 @@
 package com.typ.islamic_toolkit_kmp.shared
 
-expect class Locale(language: String = "", country: String = "") {
+internal expect class Locale(language: String = "", country: String = "") {
     val language: String
     val country: String
 

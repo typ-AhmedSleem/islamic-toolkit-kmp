@@ -4,7 +4,7 @@ package com.typ.islamic_toolkit_kmp.shared
 
 import platform.Foundation.NSLocale
 
-actual class Locale actual constructor(language: String, country: String) {
+internal actual class Locale actual constructor(language: String, country: String) {
 
     actual val language: String = language
     actual val country: String = country
