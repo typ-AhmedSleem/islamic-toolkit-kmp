@@ -14,23 +14,31 @@ package com.typ.islamic_toolkit_kmp.core.location
  *
  * @constructor Creates an instance of the `Location` class.
  */
-open class Location(
+data class Location(
     /**
      * Code of country this location belongs to
      */
-    open val code: String,
+    val code: String,
     /**
      * Latitude of this location
      */
-    open val latitude: Double,
+    val latitude: Double,
     /**
      * Longitude of this location
      */
-    open val longitude: Double,
+    val longitude: Double,
     /**
      * Timezone of this location
      */
-    open val timezone: Double
+    val timezone: Double,
+    /**
+     *  Country of this location
+     */
+    val country: String = "",
+    /**
+     *  City of this location
+     */
+    val city: String = "",
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -61,6 +69,10 @@ open class Location(
             append(longitude)
             append(", timezone=")
             append(timezone)
+            append(", country='")
+            append(country)
+            append("', city='")
+            append(city)
             append(")")
         }
     }
