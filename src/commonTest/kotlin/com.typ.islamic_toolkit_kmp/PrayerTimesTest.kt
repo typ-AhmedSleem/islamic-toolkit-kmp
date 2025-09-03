@@ -62,7 +62,7 @@ class PrayerTimesTest {
             println("Today is: $it")
         }
 
-        val tomorrow = today
+        today
             .nextDay
             .also {
                 println("Tomorrow is: $it")
@@ -86,7 +86,7 @@ class PrayerTimesTest {
         // * Prepare calculator runtime
         val today = Timestamp.now.apply(::println)
         val cairo = PopularLocations.Egypt.CAIRO
-        val location = Location(
+        Location(
             code = "EG",
             latitude = 30.647093,
             longitude = 31.394939,
