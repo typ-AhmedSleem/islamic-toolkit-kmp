@@ -6,7 +6,6 @@
 package com.typ.islamic_toolkit_kmp.core.datetime
 
 import com.typ.islamic_toolkit_kmp.core.datetime.PatternFormatter.Companion.custom
-import com.typ.islamic_toolkit_kmp.core.datetime.PatternFormatter.PrayTimes
 import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager
 import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager.Locales
 import com.typ.islamic_toolkit_kmp.shared.Locale
@@ -118,6 +117,10 @@ open class PatternFormatter private constructor(private val pattern: String) {
      */
     fun format(timestamp: Timestamp, locale: Locale): String {
         return SimpleDateFormat(pattern, locale).format(timestamp)
+    }
+
+    fun format(timestamp: Timestamp, languageCode: String): String {
+        return SimpleDateFormat(pattern, LocaleManager.custom(languageCode)).format(timestamp)
     }
 
     companion object {

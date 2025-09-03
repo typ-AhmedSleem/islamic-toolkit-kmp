@@ -12,7 +12,6 @@ import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriCalendarMonthType
 import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonth
 import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.HijriMonthNameFormat
 import com.typ.islamic_toolkit_kmp.hijri.lib.ummelqura.text.HijriCalendarMonthsNames
-import com.typ.islamic_toolkit_kmp.shared.Locale
 
 /**
  * Model class representing HijriDate
@@ -39,10 +38,10 @@ open class HijriDate(
 
     fun getMonthName(
         month: HijriCalendarMonthType,
-        locale: Locale = LocaleManager.Locales.ENGLISH,
-        format: HijriMonthNameFormat = HijriMonthNameFormat.LONG
+        languageCode: String = "en",
+        format: HijriMonthNameFormat = HijriMonthNameFormat.LONG,
     ): String {
-        return HijriCalendarMonthsNames.getWithNames(month, locale).let {
+        return HijriCalendarMonthsNames.getWithNames(month, LocaleManager.custom(languageCode)).let {
             if (format == HijriMonthNameFormat.LONG) it.longName
             else it.shortName
         }

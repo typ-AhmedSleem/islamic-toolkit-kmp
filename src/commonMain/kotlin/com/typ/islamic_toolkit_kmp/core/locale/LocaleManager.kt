@@ -8,7 +8,7 @@ import com.typ.islamic_toolkit_kmp.shared.Locale
  * The `LocaleManager` object provides utility functions and management for handling locales in your application.
  * The object can be used to access locale-related functionality throughout the application.
  */
-object LocaleManager {
+internal object LocaleManager {
 
     /**
      * This function creates a new custom locale with given language code.
