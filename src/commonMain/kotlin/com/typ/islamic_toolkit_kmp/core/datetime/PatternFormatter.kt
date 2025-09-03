@@ -115,7 +115,7 @@ open class PatternFormatter private constructor(private val pattern: String) {
      * @return The formatted date and time string based on the specified `pattern` and `locale`.
      *
      */
-    fun format(timestamp: Timestamp, locale: Locale): String {
+    internal fun format(timestamp: Timestamp, locale: Locale): String {
         return SimpleDateFormat(pattern, locale).format(timestamp)
     }
 
