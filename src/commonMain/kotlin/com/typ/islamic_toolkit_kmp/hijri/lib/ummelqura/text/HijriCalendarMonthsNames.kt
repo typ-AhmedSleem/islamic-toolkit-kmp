@@ -11,7 +11,7 @@ abstract class HijriCalendarMonthsNames {
     abstract val shortNames: Map<Int, String>
 
     companion object {
-        fun getWithNames(type: HijriCalendarMonthType, locale: Locale = LocaleManager.Locales.ENGLISH): HijriMonth {
+        internal fun getWithNames(type: HijriCalendarMonthType, locale: Locale = LocaleManager.Locales.ENGLISH): HijriMonth {
             val names = when (locale) {
                 LocaleManager.Locales.ARABIC -> {
                     val short = HijriCalendarMonthsArabic.shortNames[type.ordinal + 1]!!
