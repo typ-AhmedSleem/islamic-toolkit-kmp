@@ -4,7 +4,7 @@ import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Date
 
-actual class SimpleDateFormat actual constructor(pattern: String, locale: Locale) {
+internal actual class SimpleDateFormat actual constructor(pattern: String, locale: Locale) {
 
     private val formatter = SimpleDateFormat(pattern, locale.toJvmLocale())
 

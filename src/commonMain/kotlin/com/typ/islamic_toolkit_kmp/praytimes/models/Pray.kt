@@ -45,7 +45,7 @@ class Pray(
     val formattedTime: String
         get() = getFormattedTime(PatternFormatter.PrayTimes(), LocaleManager.Locales.ENGLISH)
 
-    fun getFormattedTime(formatter: PatternFormatter, locale: Locale): String {
+    internal fun getFormattedTime(formatter: PatternFormatter, locale: Locale): String {
         return formatter.format(time, locale)
     }
 

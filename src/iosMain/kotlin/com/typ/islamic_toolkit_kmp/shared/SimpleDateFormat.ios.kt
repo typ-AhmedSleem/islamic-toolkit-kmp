@@ -7,7 +7,7 @@ import kotlinx.datetime.toNSDate
 import platform.Foundation.NSDateFormatter
 
 
-actual class SimpleDateFormat actual constructor(pattern: String, locale: Locale) {
+internal actual class SimpleDateFormat actual constructor(pattern: String, locale: Locale) {
     private val formatter: NSDateFormatter = NSDateFormatter().apply {
         this.dateFormat = pattern
         this.locale = locale.toNSLocale()
