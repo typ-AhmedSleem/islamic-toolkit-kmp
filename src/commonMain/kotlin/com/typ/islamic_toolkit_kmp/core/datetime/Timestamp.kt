@@ -7,21 +7,23 @@ package com.typ.islamic_toolkit_kmp.core.datetime
 
 import com.typ.islamic_toolkit_kmp.core.annotations.IntRange
 import com.typ.islamic_toolkit_kmp.core.datetime.PatternFormatter.DateTimeFull
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.number
 import kotlinx.datetime.plus
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Clock
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 /**
  * Class that holds and does all operations that has time and date on it.
@@ -32,6 +34,7 @@ import kotlin.time.Duration.Companion.seconds
  * 4.Get formatted timestamp according to given pattern.
  * 5.Compare to another timestamp in date or time or both
  */
+@OptIn(ExperimentalTime::class)
 class Timestamp private constructor() {
 
     var instant: Instant = Clock.System.now()
@@ -39,7 +42,7 @@ class Timestamp private constructor() {
 
     var timeZone: TimeZone = TimeZone.currentSystemDefault()
         set(value) {
-            instant = instant.toLocalDateTime(timeZone).toInstant(timeZone)
+            instant = instant.toLocalDateTime(value).toInstant(value)
             field = value
         }
 
@@ -97,19 +100,19 @@ class Timestamp private constructor() {
 
     @get:IntRange(from = 1, to = 31)
     var day: Int
-        get() = date.dayOfMonth
+        get() = date.day
         set(value) {
             val curr = this.date
-            val date = LocalDate(curr.year, curr.monthNumber, value)
+            val date = LocalDate(curr.year, curr.month.number, value)
             instant = LocalDateTime(date, this.time).toInstant(timeZone)
         }
 
     @get:IntRange(from = 1, to = 12)
     var month: Int
-        get() = date.monthNumber
+        get() = date.month.number
         set(value) {
             val curr = this.date
-            val date = LocalDate(curr.year, value, curr.dayOfMonth)
+            val date = LocalDate(curr.year, value, curr.day)
             instant = LocalDateTime(date, this.time).toInstant(timeZone)
         }
 
@@ -117,7 +120,7 @@ class Timestamp private constructor() {
         get() = date.year
         set(value) {
             val curr = this.date
-            val date = LocalDate(value, curr.month, curr.dayOfMonth)
+            val date = LocalDate(value, curr.month, curr.day)
             instant = LocalDateTime(date, this.time).toInstant(timeZone)
         }
 
