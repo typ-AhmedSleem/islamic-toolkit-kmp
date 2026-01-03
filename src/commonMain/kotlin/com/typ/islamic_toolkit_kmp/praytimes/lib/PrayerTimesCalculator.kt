@@ -17,13 +17,14 @@ import com.typ.islamic_toolkit_kmp.praytimes.utils.PrayerTimesMath.dArcCot
 import com.typ.islamic_toolkit_kmp.praytimes.utils.PrayerTimesMath.dCos
 import com.typ.islamic_toolkit_kmp.praytimes.utils.PrayerTimesMath.dSin
 import com.typ.islamic_toolkit_kmp.praytimes.utils.PrayerTimesMath.dTan
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.offsetAt
 import kotlin.math.abs
 import kotlin.math.floor
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 /**
  * Class that do all complicated calculations to get PrayerTimes
@@ -213,6 +214,7 @@ class PrayerTimesCalculator(val location: Location, val config: Config) {
                 calcMethod = CalculationMethod.CUSTOM
             }
 
+        @OptIn(ExperimentalTime::class)
         val defaultTimezone: Double
             get() = TimeZone.currentSystemDefault().offsetAt(Clock.System.now()).totalSeconds / 60.0 / 60.0
 //            get() = TimeZone.getDefault().rawOffset / 3600.0 / 1000
