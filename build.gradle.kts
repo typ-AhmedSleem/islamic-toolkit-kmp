@@ -14,6 +14,7 @@ kotlin {
         }
     }
 
+    val kotlinxDateTime = with(libs.kotlinx.datetime.get()) { "$group:$name:$version" }
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -21,12 +22,13 @@ kotlin {
         it.binaries.framework {
             baseName = "IslamicToolkit"
             isStatic = true
+            export(kotlinxDateTime)
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.kotlinx.datetime)
+            api(libs.kotlinx.datetime)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
