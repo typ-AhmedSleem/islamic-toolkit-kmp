@@ -5,6 +5,7 @@ package com.typ.islamic_toolkit_kmp.shared
 import com.typ.islamic_toolkit_kmp.core.datetime.Timestamp
 import kotlinx.datetime.toNSDate
 import platform.Foundation.NSDateFormatter
+import kotlin.time.ExperimentalTime
 
 
 internal actual class SimpleDateFormat actual constructor(pattern: String, locale: Locale) {
@@ -13,6 +14,7 @@ internal actual class SimpleDateFormat actual constructor(pattern: String, local
         this.locale = locale.toNSLocale()
     }
 
+    @OptIn(ExperimentalTime::class)
     actual fun format(timestamp: Timestamp): String {
         return formatter.stringFromDate(timestamp.instant.toNSDate())
     }
