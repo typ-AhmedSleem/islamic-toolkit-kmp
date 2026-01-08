@@ -49,6 +49,24 @@ object PrayerTimesCalculatorConfigs {
         higherLatMethod = HigherLatitudeMethod.NONE,
     )
 
+    fun custom(
+        calcMethod: CalculationMethod = CalculationMethod.CUSTOM,
+        asrMethod: AsrMethod = AsrMethod.SHAFII,
+        higherLatMethod: HigherLatitudeMethod = HigherLatitudeMethod.NONE,
+        useDefaultTimezone: Boolean = true,
+        offsets: PrayerTimesOffsets = PrayerTimesOffsets(),
+        dhuhrMinutes: Int = 0,
+    ): PrayerTimesCalculator.Config {
+        return CUSTOM.apply {
+            this.calcMethod = calcMethod
+            this.asrMethod = asrMethod
+            this.higherLatMethod = higherLatMethod
+            this.useDefaultTimezone = useDefaultTimezone
+            this.offsets = offsets
+            this.dhuhrMinutes = dhuhrMinutes
+        }
+    }
+
     fun pickSuitableConfigForLocation(location: Location): PrayerTimesCalculator.Config {
         return when (location.code.trim().uppercase()) {
             in listOf("CA", "USA", "MEX") -> ISNA
