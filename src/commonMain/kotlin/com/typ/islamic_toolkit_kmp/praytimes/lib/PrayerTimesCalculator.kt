@@ -79,13 +79,17 @@ class PrayerTimesCalculator(val location: Location, val config: Config) {
      */
 
     private fun rawToTime(time: Double): LocalTime {
-        var temp = time
-        if (temp.isNaN()) return LocalTime(0, 0, 0) // Invalid time
-        // Fix hours and minutes
-        temp = fixHour(temp + 0.5 / 60.0) // add 0.5 minutes to round
-        val hrs = floor(temp).toInt()
-        val mins = floor((temp - hrs) * 60.0)
-        return LocalTime(hour = hrs, minute = mins.toInt(), second = 0)
+        if (time.isNaN()) return LocalTime(0, 0, 0) // Invalid time
+        
+        // Convert to total seconds and round to nearest second
+        val fixedTime = fixHour(time)
+        val totalSeconds = kotlin.math.round(fixedTime * 3600.0).toInt()
+        
+        val hrs = (totalSeconds / 3600) % 24
+        val mins = (totalSeconds % 3600) / 60
+        val secs = totalSeconds % 60
+        
+        return LocalTime(hour = hrs, minute = mins, second = secs)
     }
 
     /**

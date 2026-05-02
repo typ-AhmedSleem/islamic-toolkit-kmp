@@ -9,15 +9,18 @@ import com.typ.islamic_toolkit_kmp.praytimes.lib.PrayerTimesCalculator
 import com.typ.islamic_toolkit_kmp.praytimes.models.PrayerTimes
 import com.typ.islamic_toolkit_kmp.praytimes.utils.prayerTimesCalcConfig
 import kotlinx.datetime.LocalDateTime
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import com.typ.islamic_toolkit_kmp.core.datetime.PatternFormatter.Companion.custom
+import com.typ.islamic_toolkit_kmp.core.locale.LocaleManager
 
 class PrayerTimesTest {
 
     private lateinit var prayerTimes: PrayerTimes
 
-    @Test
+    @BeforeTest
     fun prepareTest() {
         Timestamp.now.apply(::println)
         val location = Location(
@@ -111,17 +114,18 @@ class PrayerTimesTest {
         )
 
         // * Print results and compare them
+        val formatter = custom("hh:mm:ss aa")
         println(
             """
             
             |   Pray   |   Old method   |  New method    |
             |----------|----------------|----------------|
-            |  Fajr    |    ${o.fajr.formattedTime}    |    ${n.fajr.formattedTime}    |
-            |  Sunrise |    ${o.sunrise.formattedTime}    |    ${n.sunrise.formattedTime}    |
-            |  Dhuhr   |    ${o.dhuhr.formattedTime}    |    ${n.dhuhr.formattedTime}    |
-            |  Asr     |    ${o.asr.formattedTime}    |    ${n.asr.formattedTime}    |
-            |  Maghrib |    ${o.maghrib.formattedTime}    |    ${n.maghrib.formattedTime}    |
-            |  Isha    |    ${o.isha.formattedTime}    |    ${n.isha.formattedTime}    |
+            |  Fajr    |  ${o.fajr.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |  ${n.fajr.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |
+            |  Sunrise |  ${o.sunrise.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |  ${n.sunrise.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |
+            |  Dhuhr   |  ${o.dhuhr.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |  ${n.dhuhr.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |
+            |  Asr     |  ${o.asr.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |  ${n.asr.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |
+            |  Maghrib |  ${o.maghrib.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |  ${n.maghrib.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |
+            |  Isha    |  ${o.isha.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |  ${n.isha.getFormattedTime(formatter, LocaleManager.Locales.ENGLISH)}  |
             ----------------------------------------------
             """.trimIndent()
         )
