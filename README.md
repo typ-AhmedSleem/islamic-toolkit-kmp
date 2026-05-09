@@ -139,8 +139,10 @@ src/
 
 ## License
 
-Copyright © TYP INC. All Rights Reserved.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+Copyright © 2026 Ahmed Sleem
 
 ## Author
 
-Developed by **Ahmed Sleem** — [@typ-AhmedSleem](https://github.com/typ-AhmedSleem)
+**Ahmed Sleem** — [@typ-AhmedSleem](https://github.com/typ-AhmedSleem)
