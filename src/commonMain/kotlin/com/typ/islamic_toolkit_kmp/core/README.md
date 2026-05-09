@@ -1,98 +1,113 @@
-## Core
+# Core Module
 
-#### Contains necessary code used by other modules
+Shared utilities used by all feature modules in the library.
 
----
+## Components
 
-## Module structure
+### Timestamp
 
-* [**core.locale**](https://github.com/typ-AhmedSleem/islamic-toolkit-kt/blob/develop/core/src/main/kotlin/com.typ.islamictkt/locale): Provides locale-related utils.
-
-* [**core.location**](https://github.com/typ-AhmedSleem/islamic-toolkit-kt/core/blob/develop/src/main/kotlin/com.typ.islamictkt/location): Provides
-    * `Location` class to hold location information.
-    * `PopularLocations` object where you can find most popular cities
-      as location models ready to be used.
-
-* [**core.datetime**](https://github.com/typ-AhmedSleem/islamic-toolkit-kt/blob/develop/core/src/main/kotlin/com.typ.islamictkt/datetime): Provides
-    * Inheritable classes to easily handle datetime processing and representations.
-    * Multiple high-level datetime format patterns as classes.
-
----
-
-## Usage Examples (Kotlin)
-
-### core.locale
-
-Getting default locale of the system
+A wrapper around `kotlinx.datetime.Instant` for date/time operations.
 
 ```kotlin
-/** it typically calls: Locale.getDefault()
- *  but is added as a refrence to future work in LocaleManager
- */
-val locale = LocaleManager.getDefault()
+// Current time
+val now = Timestamp.now
+val yesterday = Timestamp.yesterday
+val tomorrow = Timestamp.tomorrow
+
+// From a specific date
+val date = Timestamp(LocalDate(2024, 10, 31))
+
+// From date + time
+val dateTime = Timestamp(
+    date = LocalDate(2024, 10, 31),
+    time = LocalTime(15, 30)
+)
+
+// Access fields
+println(now.year)       // 2024
+println(now.month)      // 10
+println(now.day)        // 31
+println(now.hour)       // 15
+println(now.minutes)    // 30
+
+// Navigate
+val nextDay = now.nextDay
+val prevDay = now.previousDay
+
+// Roll by amount
+now.roll(CalendarField.DATE, 7)   // Advance 7 days
+now.roll(CalendarField.MONTH, -1) // Go back 1 month
+
+// Format
+println(now.getFormatted(PatternFormatter.DateFull()))
+// Output: "31 October 2024"
 ```
 
-Get a missing locale in `java.util.Locale`
+### PatternFormatter
+
+Pre-defined and custom date/time format patterns.
+
+| Formatter | Pattern | Example |
+|-----------|---------|---------|
+| `Time12SX()` | `hh:mm aa` | `03:25 pm` |
+| `Time12NSX()` | `hh:mm` | `03:25` |
+| `Time24()` | `HH:mm` | `15:30` |
+| `DateShort()` | `dd/MM/yyyy` | `01/08/2001` |
+| `DateNormal()` | `dd MMM yyyy` | `01 Aug 2001` |
+| `DateFull()` | `dd MMMM yyyy` | `01 August 2001` |
+| `DateTimeFull()` | `dd MMM yyyy hh:mm aa` | `01 Aug 2001 12:03 am` |
+| `PrayTimes()` | `hh:mm aa` | `05:23 am` |
 
 ```kotlin
-val locale = LocaleManager.Locales.ARABIC
+// Custom pattern
+val formatter = PatternFormatter.custom("yyyy-MM-dd HH:mm:ss")
+println(formatter.format(Timestamp.now))
 ```
 
-or create using custom language code
+### Location
+
+Represents a geographic location for calculations.
 
 ```kotlin
-// Creates a Locale for Arabic
-val locale = LocaleManager.custom("ar")
-```
-
-### core.datetime
-
-Get a pre-defined `PatternFormatter`
-
-```kotlin
-val formatter = PatternFormatter.Time12SX() // 06:03 am
-```
-
-or create a custom formatter
-
-```kotlin
-val formatter = PatternFormatter.custom("dd MMM yyyy") // 01 Aug 2001
-```
-
-> #### Tired of raw time in milliseconds, well say hello to `Timestamp`
-> `Timestamp` object instance takes a snapshot of system datetime
-> by getting calendar instance using `Calendar.getInstance()`.
-
-```kotlin
-val now = Timestamp.now // timestamp of Now.
-val yesterday = Timestamp.yesterday // timestamp of Yesterday. [see NOTE below]
-val tomorrow = Timestamp.tomorrow // timestamp of Tomorrow. [see NOTE below]
-```
-
-> **NOTE:** `Timestamp.yesterday` or `Timestamp.tomorrow` takes a datetime
-> snapshot of now using `Timestamp.now` then rolls date by 1 or -1
-> > `fun tomorrow() = now().apply { roll(Calendar.DATE, 1) }`
->
-> > `fun yesterday() = now().apply { roll(Calendar.DATE, -1) }`
->
-
-### core.location
-
-Creating a new `Location`
-
-```kotlin
+// Create a location
 val cairo = Location(
     code = "EG",
-    latitude = 30.12367823,
-    longitude = 31.25339501,
+    latitude = 30.0444,
+    longitude = 31.2357,
     timezone = 2.0
 )
+
+// Or use a pre-defined city
+val makkah = PopularLocations.SaudiArabia.MAKKAH
+val dubai = PopularLocations.UnitedArabEmirates.DUBAI
 ```
 
-or you can use a pre-defined city from `PopularLocations`
-> **NOTE:** Not all cities are defined in `PopularLocations`
-> and more cities are to be added later by me or open-source contributors.
+### Available Cities in `PopularLocations`
+
+| Country | Cities |
+|---------|--------|
+| 🇪🇬 Egypt | Cairo, Giza, Alexandria, Sohag, Luxor, Mersa Matruh |
+| 🇸🇦 Saudi Arabia | Makkah, Medina |
+| 🇦🇪 UAE | Dubai |
+| 🇸🇾 Syria | Damascus |
+| 🇵🇸 Palestine | Jerusalem |
+| 🇮🇶 Iraq | Baghdad |
+| 🇲🇦 Morocco | Casablanca |
+| 🇩🇿 Algeria | Algiers |
+| 🇰🇼 Kuwait | Kuwait City |
+| 🇯🇴 Jordan | Amman |
+| 🇱🇾 Libya | Tripoli |
+| 🇱🇧 Lebanon | Beirut |
+| 🇾🇪 Yemen | Sana'a |
+| 🇶🇦 Qatar | Doha |
+| 🇸🇩 Sudan | Khartoum |
+
+### LocaleManager
+
+Provides locale utilities for formatting.
 
 ```kotlin
-val cairo = PopularLocations.Egypt.CAIRO
+val arabic = LocaleManager.Locales.ARABIC
+val english = LocaleManager.Locales.ENGLISH
+val custom = LocaleManager.custom("fr")
 ```
